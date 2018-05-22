@@ -6,8 +6,9 @@ import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { HomeComponent } from './public/home/home.component';
 import { FullBannerComponent } from './public/home/full-banner/full-banner.component';
-import { VehiclesComponent } from './public/home/vehicles/vehicles.component';
+import { VehiclesComponent } from './public/vehicles/vehicles.component';
 import { AppRoutingModule } from './app-routing.module';
+import { VehicleDetailComponent } from './public/vehicles/detail/vehicle-detail.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
     FooterComponent,
     HomeComponent,
     FullBannerComponent,
-    VehiclesComponent
+    VehiclesComponent,
+    VehicleDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -25,4 +27,5 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
