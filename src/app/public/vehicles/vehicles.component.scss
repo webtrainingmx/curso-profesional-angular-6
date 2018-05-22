@@ -1,0 +1,8 @@
+.b-vehicle {
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  }
+}

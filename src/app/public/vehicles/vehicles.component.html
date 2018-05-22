@@ -21,7 +21,11 @@
                 </a>
               </div>
               <div class="media-content">
-                <p class="title is-4">{{ vehicle.manufacturer }} {{ vehicle.model }}</p>
+                <p class="title is-4">
+                  <a routerLink="/vehicles/{{vehicle.id}}">
+                    {{ vehicle.manufacturer }} {{ vehicle.model }}
+                  </a>
+                </p>
                 <p class="subtitle is-6">@johnsmith</p>
               </div>
             </div>

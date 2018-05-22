@@ -28,4 +28,8 @@ export class VehicleDetailComponent implements OnInit {
     this.vehicle = this._vehiclesService.getVehicle(id);
   }
 
+  goBack() {
+    this._location.back();
+  }
+
 }
