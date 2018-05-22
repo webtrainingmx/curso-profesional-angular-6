@@ -7,6 +7,7 @@ import { FooterComponent } from './common/footer/footer.component';
 import { HomeComponent } from './public/home/home.component';
 import { FullBannerComponent } from './public/home/full-banner/full-banner.component';
 import { VehiclesComponent } from './public/home/vehicles/vehicles.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { VehiclesComponent } from './public/home/vehicles/vehicles.component';
     VehiclesComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
