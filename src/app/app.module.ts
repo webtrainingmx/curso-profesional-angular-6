@@ -6,6 +6,7 @@ import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { HomeComponent } from './public/home/home.component';
 import { FullBannerComponent } from './public/home/full-banner/full-banner.component';
+import { VehiclesComponent } from './public/home/vehicles/vehicles.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { FullBannerComponent } from './public/home/full-banner/full-banner.compo
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    FullBannerComponent
+    FullBannerComponent,
+    VehiclesComponent
   ],
   imports: [
     BrowserModule
