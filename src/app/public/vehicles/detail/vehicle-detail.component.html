@@ -1,9 +1,23 @@
 <div class="container">
+  <div class="b-component margin-top-sm">
+    <button (click)="goBack()" class="button is-success is-outlined">
+      <i class="fas fa-arrow-left"></i>
+      <span>&nbsp;Go back</span>
+    </button>
+  </div>
+
   <div class="content">
     <div class="b-component">
-      <button (click)="goBack()" class="button is-success is-outlined">
-        <i class="fas fa-arrow-left"></i>
-      </button>
+
+      <div class="b-vehicle b-vehicle--detail">
+        <h1>{{ vehicle.manufacturer?.name }} {{ vehicle.model }}</h1>
+        <div class="b-vehicle__price">
+          <p>
+            $ {{ vehicle.price }} USD
+          </p>
+        </div>
+      </div>
+
       {{ vehicle |json}}
     </div>
   </div>

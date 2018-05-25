@@ -25,7 +25,12 @@ export class VehicleDetailComponent implements OnInit {
   getVehicle() {
     // Get the "id" from the route
     const id = parseInt(this._route.snapshot.paramMap.get('id'), 10);
-    this.vehicle = this._vehiclesService.getVehicle(id);
+    this._vehiclesService.getVehicle(id).
+      subscribe(
+        vehicle => this.vehicle = vehicle,
+        error => console.error(error)
+      );
+    // this.vehicle = this._vehiclesService.getVehicle(id);
   }
 
   goBack() {
