@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
@@ -11,6 +12,8 @@ import { VehiclesComponent } from './public/vehicles/vehicles.component';
 import { AppRoutingModule } from './app-routing.module';
 import { VehicleDetailComponent } from './public/vehicles/detail/vehicle-detail.component';
 import { LoginFormComponent } from './public/login/login-form/login-form.component';
+import { GenerateImageUrlPipe } from './common/pipes/generate-image-url.pipe';
+import { GetFirstCharPipe } from './common/pipes/get-first-char.pipe';
 
 @NgModule({
   declarations: [
@@ -21,11 +24,14 @@ import { LoginFormComponent } from './public/login/login-form/login-form.compone
     FullBannerComponent,
     VehiclesComponent,
     VehicleDetailComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    GenerateImageUrlPipe,
+    GetFirstCharPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
