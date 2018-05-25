@@ -1,8 +1,13 @@
+import { Manufacturer } from './manufacturer.model';
+
 export class Vehicle {
   id: number;
-  manufacturer: string;
+  manufacturer: Manufacturer;
   model: string;
   price: number;
-  wiki: string;
-  img: string;
+  link: string;
+  image: string;
+  thumbnail: string;
+  created_at: string;
+  updated_at: string;
 }
