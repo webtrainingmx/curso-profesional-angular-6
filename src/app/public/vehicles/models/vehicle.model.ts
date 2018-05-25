@@ -10,4 +10,5 @@ export class Vehicle {
   thumbnail: string;
   created_at: string;
   updated_at: string;
+  year: number;
 }

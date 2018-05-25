@@ -6,19 +6,56 @@
     </button>
   </div>
 
-  <div class="content">
-    <div class="b-component">
+  <div class="b-component">
 
-      <div class="b-vehicle b-vehicle--detail">
-        <h1>{{ vehicle.manufacturer?.name }} {{ vehicle.model }}</h1>
-        <div class="b-vehicle__price">
-          <p>
-            $ {{ vehicle.price }} USD
-          </p>
+    <div class="b-vehicle b-vehicle--detail">
+
+      <div class="columns">
+        <div class="column is-one-third">
+          <figure class="b-vehicle__image-container">
+            <img src="{{vehicle.image | generateImageUrl}}"
+                 alt="{{ vehicle.manufacturer?.name }} {{ vehicle.model }}" class="b-vehicle__image">
+          </figure>
+
         </div>
+        <div class="column">
+          <div class="content b-vehicle">
+            <h1 class="b-vehicle__title">{{ vehicle.manufacturer?.name }} {{ vehicle.model }}</h1>
+            <div class="b-vehicle__year">
+              <p>
+                <strong>Year:</strong> {{ vehicle.year }}
+              </p>
+            </div>
+
+            <div class="b-vehicle__price">
+              <p>
+                <strong>Price per day:</strong> $ {{ vehicle.price }} USD
+              </p>
+            </div>
+
+            <div class="b-vehicle__price">
+              <p>
+                <strong>Manufacturer:</strong>
+                <a href="#" routerLink="/manufacturers/{{vehicle.manufacturer?.id}}" class="b-vehicle__manufacturer">
+                  {{ vehicle.manufacturer?.name }}
+                </a>
+              </p>
+            </div>
+
+            <div class="b-vehicle__more-link">
+              <p>
+                <a href="{{vehicle.link}}" target="_blank">
+                  <i class="fa fa-external-link-alt"></i>
+                  <span>&nbsp;More information</span>
+                </a>
+              </p>
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
-      {{ vehicle |json}}
     </div>
   </div>
 </div>

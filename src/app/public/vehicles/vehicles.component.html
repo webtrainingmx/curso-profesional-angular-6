@@ -1,47 +1,49 @@
 <div class="container margin-top-sm margin-bottom-sm">
-  <div class="content">
-    <h2>See our vehicles</h2>
-  </div>
-  <div class="columns is-multiline is-mobile">
-    <div class="column is-one-quarter" *ngFor="let vehicle of vehicles">
-      <div class="b-vehicle">
-        <div class="card">
-          <div class="card-image">
-            <a href="#" routerLink="/vehicles/{{vehicle.id}}">
-              <figure class="image is-16by9">
-                <img src="{{vehicle.thumbnail | generateImageUrl}}" alt="Placeholder image">
-              </figure>
-            </a>
-          </div>
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <a href="#" routerLink="/vehicles/{{vehicle.id}}" class="b-vehicle__manufacturer-char">
-                  {{ vehicle.manufacturer?.name | getFirstChar }}
-                </a>
-              </div>
-              <div class="media-content">
-                <p class="b-vehicle__title title is-4">
-                  <a class="b-vehicle__title-link" routerLink="/vehicles/{{vehicle.id}}">
-                    {{ vehicle.manufacturer?.name }} {{ vehicle.model }}
-                  </a>
-                </p>
-                <p class="b-vehicle__subtitle subtitle is-6">{{ vehicle.manufacturer?.name }}</p>
-              </div>
+  <div class="b-content">
+    <div class="content">
+      <h2>See our vehicles</h2>
+    </div>
+    <div class="columns is-multiline">
+      <div class="column is-one-quarter-desktop is-one-third-tablet" *ngFor="let vehicle of vehicles">
+        <div class="b-vehicle">
+          <div class="card">
+            <div class="card-image">
+              <a href="#" routerLink="/vehicles/{{vehicle.id}}">
+                <figure class="image is-16by9">
+                  <img src="{{vehicle.thumbnail | generateImageUrl}}"
+                       alt="{{ vehicle.manufacturer?.name }} {{ vehicle.model }}">
+                </figure>
+              </a>
             </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#" routerLink="/vehicles/{{vehicle.id}}" class="b-vehicle__manufacturer-char">
+                    {{ vehicle.manufacturer?.name | getFirstChar }}
+                  </a>
+                </div>
+                <div class="media-content">
+                  <p class="b-vehicle__title title is-4">
+                    <a class="b-vehicle__title-link" routerLink="/vehicles/{{vehicle.id}}">
+                      {{ vehicle.manufacturer?.name }} {{ vehicle.model }}
+                    </a>
+                  </p>
+                  <p class="b-vehicle__subtitle subtitle is-6">{{ vehicle.manufacturer?.name }}</p>
+                </div>
+              </div>
 
-            <div class="b-vehicle__content content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-              <a href="#">#css</a> <a href="#">#responsive</a>
-              <br>
-              <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+              <div class="b-vehicle__content content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                <a href="#">#css</a> <a href="#">#responsive</a>
+                <br>
+                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </div>
 
