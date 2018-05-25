@@ -1,36 +1,36 @@
 <div class="container margin-top-sm margin-bottom-sm">
   <div class="content">
-    <h2>See our cars</h2>
+    <h2>See our vehicles</h2>
   </div>
   <div class="columns is-multiline is-mobile">
     <div class="column is-one-quarter" *ngFor="let vehicle of vehicles">
       <div class="b-vehicle">
         <div class="card">
           <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-            </figure>
+            <a href="#" routerLink="/vehicles/{{vehicle.id}}">
+              <figure class="image is-16by9">
+                <img src="{{vehicle.thumbnail | generateImageUrl}}" alt="Placeholder image">
+              </figure>
+            </a>
           </div>
           <div class="card-content">
             <div class="media">
               <div class="media-left">
-                <a routerLink="/vehicles/{{vehicle.id}}">
-                  <figure class="image is-48x48">
-                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                  </figure>
+                <a href="#" routerLink="/vehicles/{{vehicle.id}}" class="b-vehicle__manufacturer-char">
+                  {{ vehicle.manufacturer?.name | getFirstChar }}
                 </a>
               </div>
               <div class="media-content">
-                <p class="title is-4">
-                  <a routerLink="/vehicles/{{vehicle.id}}">
-                    {{ vehicle.manufacturer }} {{ vehicle.model }}
+                <p class="b-vehicle__title title is-4">
+                  <a class="b-vehicle__title-link" routerLink="/vehicles/{{vehicle.id}}">
+                    {{ vehicle.manufacturer?.name }} {{ vehicle.model }}
                   </a>
                 </p>
-                <p class="subtitle is-6">@johnsmith</p>
+                <p class="b-vehicle__subtitle subtitle is-6">{{ vehicle.manufacturer?.name }}</p>
               </div>
             </div>
 
-            <div class="content">
+            <div class="b-vehicle__content content">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Phasellus nec iaculis mauris. <a>@bulmaio</a>.
               <a href="#">#css</a> <a href="#">#responsive</a>
