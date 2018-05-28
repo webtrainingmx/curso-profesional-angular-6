@@ -11,17 +11,27 @@ export class FilterByPipe implements PipeTransform {
     if (!items) {
       return [];
     }
+
     if (!searchText) {
       return items;
     }
-    if (!fieldsToFilterBy) {
-      return items;
-    }
+
+    // if (!fieldsToFilterBy) {
+    //   return items;
+    // }
 
     searchText = searchText.toLowerCase();
 
-    const filters = this.prepareFiltersObject(fieldsToFilterBy, searchText);
-    return this.multiFilter(items, filters);
+    return this.filterByModelAndManufacturer(items, searchText);
+    // const filters = this.prepareFiltersObject(fieldsToFilterBy, searchText);
+    // return this.multiFilter(items, filters);
+  }
+
+  filterByModelAndManufacturer(items, searchText) {
+    return items.filter(item => {
+      return item['model'].toLowerCase().indexOf(searchText) !== -1 ||
+        item['manufacturer']['name'].toLowerCase().indexOf(searchText) !== -1;
+    });
   }
 
   prepareFiltersObject(fieldsToFilterBy: Array<string>, searchText: string) {
