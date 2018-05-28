@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VehiclesService } from './services/vehicles.service';
+import { Vehicle } from './models/vehicle.model';
 
 @Component({
   selector: 'app-vehicles',
@@ -8,7 +9,7 @@ import { VehiclesService } from './services/vehicles.service';
 })
 export class VehiclesComponent implements OnInit {
 
-  vehicles: any;
+  vehicles: Array<Vehicle>;
   searchText: string;
   filterByFields = ['model'];
 

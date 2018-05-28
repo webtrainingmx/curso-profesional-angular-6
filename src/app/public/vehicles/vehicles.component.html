@@ -14,7 +14,6 @@
         </div>
       </div>
 
-      {{searchText}}
     </div>
 
     <div class="columns is-multiline">
@@ -48,11 +47,23 @@
               </div>
 
               <div class="b-vehicle__content content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                <a href="#">#css</a> <a href="#">#responsive</a>
+
+                <div class="b-vehicle__year">
+                  <p>
+                    <strong>Year:</strong> {{ vehicle.year }}
+                  </p>
+                </div>
+
+                <div class="b-vehicle__price">
+                  <p>
+                    <strong>Price per day:</strong> $ {{ vehicle.price }} USD
+                  </p>
+                </div>
                 <br>
-                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+
+                <div class="b-vehicle__b-rented-information" *ngIf="vehicle.rented">
+                  <span class="b-vehicle__rented">Rented</span>
+                </div>
               </div>
             </div>
           </div>
