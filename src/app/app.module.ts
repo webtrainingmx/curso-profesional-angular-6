@@ -15,6 +15,9 @@ import { LoginFormComponent } from './public/login/login-form/login-form.compone
 import { GenerateImageUrlPipe } from './common/pipes/generate-image-url.pipe';
 import { GetFirstCharPipe } from './common/pipes/get-first-char.pipe';
 import { FilterByPipe } from './common/pipes/filter-by.pipe';
+import { SessionStorageService } from 'ngx-webstorage';
+import { AuthHomeComponent } from './auth/home/auth-home.component';
+import { AfterLoginActionsService } from './common/services/after-login-actions.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { FilterByPipe } from './common/pipes/filter-by.pipe';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
+    AuthHomeComponent,
     FullBannerComponent,
     VehiclesComponent,
     VehicleDetailComponent,
@@ -36,8 +40,9 @@ import { FilterByPipe } from './common/pipes/filter-by.pipe';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [SessionStorageService, AfterLoginActionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }
