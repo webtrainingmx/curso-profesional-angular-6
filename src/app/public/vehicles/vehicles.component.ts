@@ -9,6 +9,8 @@ import { VehiclesService } from './services/vehicles.service';
 export class VehiclesComponent implements OnInit {
 
   vehicles: any;
+  searchText: string;
+  filterByFields = ['model'];
 
   constructor(public _vehiclesService: VehiclesService) {
   }
