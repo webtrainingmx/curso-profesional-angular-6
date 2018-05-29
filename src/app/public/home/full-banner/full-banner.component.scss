@@ -1,4 +1,4 @@
-$color-primary: #ffd839;
+@import "../../../../styles-variables";
 
 .b-full-banner-container {
   background-color: darken($color-primary, 10%);

@@ -1,3 +1,5 @@
+@import "../../../styles-variables";
+
 .b-vehicle {
   overflow: hidden;
 
@@ -16,7 +18,7 @@
     color: black;
 
     &:hover {
-      color: #23d160;
+      color: $color-secondary;
     }
   }
 
@@ -32,12 +34,12 @@
     font-weight: bold;
 
     &:hover {
-      background-color: #ffd839;
+      background-color: $color-primary;
     }
   }
 
   &__rented {
-    background: #ffd839;
+    background: $color-primary;
     border-radius: 5px;
     font-size: 7px;
     font-weight: 700;

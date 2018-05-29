@@ -1,13 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-
-//@import "";
+@import "styles-variables";
 
 body {
-  background-color: #f5f6f7;
+  background-color: $color-bg-body;
 }
 
 a {
-  color: #23d160;
+  color: $color-secondary;
   font-weight: bold;
 }
 
@@ -21,12 +20,6 @@ a {
   margin-bottom: 20px;
   border-radius: 1rem;
   transition: all .3s ease-in-out;
-
-  &:hover {
-    //transform: translateY(-10px);
-    //box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
-    //box-shadow: 0 0 2rem rgba(0,0,255,.1);
-  }
 }
 
 @media(max-width: 767px) {
