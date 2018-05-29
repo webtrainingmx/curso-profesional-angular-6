@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AfterLoginActionsService } from '../services/after-login-actions.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +11,10 @@ import { AfterLoginActionsService } from '../services/after-login-actions.servic
 export class HeaderComponent implements OnInit {
   isModalActive;
 
-  constructor(public _afterLoginActionsService: AfterLoginActionsService) {
+  constructor(
+    public _afterLoginActionsService: AfterLoginActionsService,
+    public _authService: AuthenticationService,
+    public router: Router) {
   }
 
   ngOnInit() {
@@ -21,6 +26,11 @@ export class HeaderComponent implements OnInit {
 
   toggleModal() {
     this.isModalActive = !this.isModalActive;
+  }
+
+  logout() {
+    this._authService.logout();
+    this.router.navigate(['/home']);
   }
 
 }

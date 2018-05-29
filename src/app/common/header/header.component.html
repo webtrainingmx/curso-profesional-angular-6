@@ -19,25 +19,29 @@
         </div>
 
         <div class="navbar-end">
-          <a class="navbar-item" (click)="toggleModal()">
-            Login / Sign-Up
+          <a class="navbar-item" (click)="toggleModal()" *ngIf="! _authService.isLoggedIn()">
+            Login
           </a>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link" href="/documentation/overview/start/">
-              Rent a car
-            </a>
-            <div class="navbar-dropdown is-boxed">
-              <a class="navbar-item" href="#">
-                Vehicles
-              </a>
-              <a class="navbar-item" href="#">
-                Locations
-              </a>
-              <a class="navbar-item" href="#">
-                Discounts
-              </a>
-            </div>
-          </div>
+
+          <a class="navbar-item" (click)="logout()" *ngIf=" _authService.isLoggedIn()">
+            Logout
+          </a>
+          <!--<div class="navbar-item has-dropdown is-hoverable">-->
+          <!--<a class="navbar-link" href="/">-->
+          <!--Rent a car-->
+          <!--</a>-->
+          <!--<div class="navbar-dropdown is-boxed">-->
+          <!--<a class="navbar-item" href="#">-->
+          <!--Vehicles-->
+          <!--</a>-->
+          <!--<a class="navbar-item" href="#">-->
+          <!--Locations-->
+          <!--</a>-->
+          <!--<a class="navbar-item" href="#">-->
+          <!--Discounts-->
+          <!--</a>-->
+          <!--</div>-->
+          <!--</div>-->
         </div>
       </div>
     </nav>
