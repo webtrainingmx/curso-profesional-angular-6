@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Vehicle } from '../models/vehicle.model';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { API } from '../../../config/api';
+import { AuthenticationService } from '../../../common/services/authentication.service';
+import { SessionStorageService } from 'ngx-webstorage';
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +49,8 @@ export class VehiclesService {
   //     img: '250px-2007_Audi_TT_Coupe.jpg'
   //   }];
 
-  constructor(public _http: HttpClient) {
+  constructor(
+    public _http: HttpClient, public _sessionStorage: SessionStorageService) {
   }
 
   // getVehicles() {
@@ -59,6 +62,19 @@ export class VehiclesService {
   getVehicles(): Observable<Array<Vehicle>> {
     const serviceURL = `${API.DATA_SERVICES_BASE_URL}/vehicles`;
     return this._http.get<Array<Vehicle>>(serviceURL);
+  }
+
+  getVehiclesByUsingToken(): Observable<Array<Vehicle>> {
+    const serviceURL = `${API.DATA_SERVICES_BASE_URL}/rentals/user`;
+    const user = this._sessionStorage.retrieve('user');
+
+    const headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Authorization': `Bearer ${user.token}`
+      });
+
+    return this._http.get<Array<Vehicle>>(serviceURL, {headers: headers});
   }
 
   getVehicle(id: number): Observable<Vehicle> {
