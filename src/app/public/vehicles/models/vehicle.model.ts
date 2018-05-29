@@ -2,6 +2,7 @@ import { Manufacturer } from './manufacturer.model';
 
 export class Vehicle {
   id: number;
+  manufacturer_id: number;
   manufacturer: Manufacturer;
   model: string;
   price: number;

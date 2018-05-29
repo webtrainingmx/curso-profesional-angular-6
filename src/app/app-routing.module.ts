@@ -9,14 +9,14 @@ import { AuthHomeComponent } from './auth/home/auth-home.component';
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent
+    path: '', pathMatch: 'full', redirectTo: '/home'
   },
-  // {
-  //   path: 'login',
-  //   component: LoginComponent,
-  //   pathMatch: 'full',
-  //   canActivate: [PublicGuard]
-  // },
+  {
+    path: 'home',
+    component: HomeComponent,
+    pathMatch: 'full',
+    canActivate: [PublicGuard]
+  },
   {
     path: 'auth-home',
     component: AuthHomeComponent,

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AfterLoginActionsService } from '../services/after-login-actions.service';
 
 @Component({
   selector: 'app-header',
@@ -6,12 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  isModalActive = false;
+  isModalActive;
 
-  constructor() {
+  constructor(public _afterLoginActionsService: AfterLoginActionsService) {
   }
 
   ngOnInit() {
+    this._afterLoginActionsService.onLoginCompleted.subscribe(
+      (message: string) => {
+        this.toggleModal();
+      });
   }
 
   toggleModal() {
