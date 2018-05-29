@@ -4,4 +4,12 @@ $color-secondary: #23d160;
   background-color: $color-secondary;
   padding: 40px 0 70px 0;
   color: white;
+
+  a {
+    color: black;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
