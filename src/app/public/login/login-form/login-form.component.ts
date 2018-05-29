@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../../../common/services/authentication.service';
+import { SessionStorageService } from 'ngx-webstorage';
+import { AfterLoginActionsService } from '../../../common/services/after-login-actions.service';
 
 @Component({
   selector: 'app-login-form',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginFormComponent implements OnInit {
 
-  user: any = <any>{};
+  user: any = <any>{
+    email: 'esmeralda@webtraining.zone',
+    password: 'esmeralda'
+  };
 
-  constructor() {
+  constructor(
+    public _authService: AuthenticationService,
+    public _sessionStorage: SessionStorageService,
+    public _afterLoginActionsService: AfterLoginActionsService,
+    public _router: Router) {
   }
 
   ngOnInit() {
@@ -18,21 +29,23 @@ export class LoginFormComponent implements OnInit {
   onSubmit(event: Event) {
     event.preventDefault();
 
-    // Connect with the authentication service
-    // TODO: Run service for auth
+    // Run service for auth
+    this._authService.login(this.user.email, this.user.password).subscribe(
+      (data) => {
+        this._authService.user = data;
+        this._authService.hasSession = true;
+        this._sessionStorage.store('user', data);
 
-    // this._authService.logIn(this.user.username, this.user.password).subscribe(
-    //   (data) => {
-    //     this._authService.user = data;
-    //     this._authService.hasSession = true;
-    //     this._locker.store('user', data);
-    //     this._router.navigate(['/home']); // navego al home
-    //   },
-    //   err => {
-    //     console.error(err);
-    //     this._authService.hasSession = false;
-    //   }
-    // );
+        // Close the modal
+        this._afterLoginActionsService.onLoginCompleted.emit('Done');
+
+        this._router.navigate(['/auth-home']); // Navigate to "auth-home"
+      },
+      err => {
+        console.error(err);
+        this._authService.hasSession = false;
+      }
+    );
   }
 
 }
