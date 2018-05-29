@@ -18,6 +18,7 @@ import { FilterByPipe } from './common/pipes/filter-by.pipe';
 import { SessionStorageService } from 'ngx-webstorage';
 import { AuthHomeComponent } from './auth/home/auth-home.component';
 import { AfterLoginActionsService } from './common/services/after-login-actions.service';
+import { SingleVehicleComponent } from './public/vehicles/single-vehicle/single-vehicle.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AfterLoginActionsService } from './common/services/after-login-actions.
     LoginFormComponent,
     GenerateImageUrlPipe,
     GetFirstCharPipe,
-    FilterByPipe
+    FilterByPipe,
+    SingleVehicleComponent
   ],
   imports: [
     BrowserModule,

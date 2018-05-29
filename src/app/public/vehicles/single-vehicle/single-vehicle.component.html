@@ -1,0 +1,49 @@
+<div class="b-vehicle b-vehicle--list-item">
+  <div class="card">
+    <div class="card-image">
+      <a href="#" routerLink="/vehicles/{{vehicle.id}}">
+        <figure class="image is-16by9">
+          <img src="{{vehicle.thumbnail | generateImageUrl}}"
+               alt="{{ vehicle.manufacturer?.name }} {{ vehicle.model }}">
+        </figure>
+      </a>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <a href="#" routerLink="/vehicles/{{vehicle.id}}" class="b-vehicle__manufacturer-char">
+            {{ vehicle.manufacturer?.name | getFirstChar }}
+          </a>
+        </div>
+        <div class="media-content">
+          <p class="b-vehicle__title title is-4">
+            <a class="b-vehicle__title-link" routerLink="/vehicles/{{vehicle.id}}">
+              {{ vehicle.manufacturer?.name }} {{ vehicle.model }}
+            </a>
+          </p>
+          <p class="b-vehicle__subtitle subtitle is-6">{{ vehicle.manufacturer?.name }}</p>
+        </div>
+      </div>
+
+      <div class="b-vehicle__content content">
+
+        <div class="b-vehicle__year">
+          <p>
+            <strong>Year:</strong> {{ vehicle.year }}
+          </p>
+        </div>
+
+        <div class="b-vehicle__price">
+          <p>
+            <strong>Price per day:</strong> $ {{ vehicle.price }} USD
+          </p>
+        </div>
+        <br>
+
+        <div class="b-vehicle__b-rented-information" *ngIf="vehicle.rented">
+          <span class="b-vehicle__rented">Rented</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
