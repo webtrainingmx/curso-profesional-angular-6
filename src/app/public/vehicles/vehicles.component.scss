@@ -1,7 +1,11 @@
 .b-vehicle {
-  transition: all .3s ease-in-out;
-  box-shadow: 0 0 2rem rgba(0, 0, 255, .1);
-  border-radius: 1rem;
+
+  &--list-item {
+    transition: all .3s ease-in-out;
+    box-shadow: 0 0 2rem rgba(0, 0, 255, .1);
+    border-radius: 1rem;
+  }
+
   overflow: hidden;
 
   &:hover {
