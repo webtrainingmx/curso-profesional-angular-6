@@ -1,16 +1,15 @@
 .b-vehicle {
+  overflow: hidden;
 
   &--list-item {
     transition: all .3s ease-in-out;
     box-shadow: 0 0 2rem rgba(0, 0, 255, .1);
     border-radius: 1rem;
-  }
 
-  overflow: hidden;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    }
   }
 
   &__title-link {
