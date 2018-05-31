@@ -9,7 +9,9 @@ import { Vehicle } from '../models/vehicle.model';
 export class SingleVehicleComponent implements OnInit {
 
   @Input() vehicle: Vehicle;
-  @Output() changeVehicle = new EventEmitter<Vehicle>();
+  @Input() isMyVehicle = false;
+  @Output() rentOneVehicle = new EventEmitter<Vehicle>();
+  @Output() cancelOneVehicle = new EventEmitter<Vehicle>();
 
   constructor() {
   }
@@ -19,7 +21,12 @@ export class SingleVehicleComponent implements OnInit {
 
   rentVehicle(vehicle) {
     console.log('Rent', vehicle);
-    this.changeVehicle.emit(vehicle);
+    this.rentOneVehicle.emit(vehicle);
+  }
+
+  cancelVehicle(vehicle) {
+    console.log('Cancel', vehicle);
+    this.cancelOneVehicle.emit(vehicle);
   }
 
 }

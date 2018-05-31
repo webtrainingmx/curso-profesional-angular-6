@@ -40,9 +40,15 @@
         </div>
         <br>
 
-        <div class="b-vehicle__b-rented-information" *ngIf="vehicle.rented">
+        <div class="b-vehicle__b-rented-information" *ngIf="vehicle.rented && !isMyVehicle">
           <span class="b-vehicle__rented">Rented</span>
         </div>
+
+        <div class="b-vehicle__b-rented-information" *ngIf="vehicle.rented && isMyVehicle">
+          <a (click)="cancelVehicle(vehicle)" class="b-vehicle__rented">Cancel</a>
+        </div>
+
+
         <div class="b-vehicle__rent-information" *ngIf="!vehicle.rented">
           <a (click)="rentVehicle(vehicle)" class="b-vehicle__rent">Rent</a>
         </div>

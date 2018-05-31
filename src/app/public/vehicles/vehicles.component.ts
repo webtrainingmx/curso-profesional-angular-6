@@ -37,9 +37,9 @@ export class VehiclesComponent implements OnInit {
     );
   }
 
-  handleChangeVehicle(event) {
+  handleRentOneVehicle(event) {
     const vehicle: Vehicle = event;
-    console.log('>> handleChangeVehicle()', vehicle);
+    console.log('>> handleRentOneVehicle()', vehicle);
 
     if (this._authService.isLoggedIn()) {
       this._vehiclesService.rentVehicle(vehicle).subscribe(

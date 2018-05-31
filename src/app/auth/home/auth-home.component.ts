@@ -23,7 +23,27 @@ export class AuthHomeComponent implements OnInit {
 
   handleRentedVehicle(event) {
     const vehicle: Vehicle = event;
+    console.log('>> handleRentedVehicle() > ', vehicle);
+
     this.vehicles.push(vehicle);
+  }
+
+  handleCancelOneVehicle(event) {
+    const vehicle: Vehicle = event;
+    console.log('>> handleCancelOneVehicle() > ', vehicle);
+    this._vehiclesService.cancelVehicle(vehicle).subscribe(
+      (response) => {
+        console.log(response);
+
+        // Remove the vehicle
+        const vehicleIndex = this.vehicles.findIndex(vehicleItem => vehicleItem.id === vehicle.id);
+        this.vehicles.splice(vehicleIndex, 1);
+      },
+      error => console.error(error),
+      () => {
+      }
+    );
+
   }
 
 }

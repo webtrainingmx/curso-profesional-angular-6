@@ -1,5 +1,5 @@
 <div class="container margin-top-sm margin-bottom-sm">
-  <div class="b-content">
+  <div class="b-content b-my-vehicles">
     <div class="content">
       <h2>My vehicles</h2>
     </div>
@@ -7,7 +7,8 @@
     <div class="columns is-multiline">
       <div class="column is-one-quarter-desktop is-one-third-tablet"
            *ngFor="let vehicle of vehicles">
-        <app-single-vehicle [vehicle]="vehicle"></app-single-vehicle>
+        <app-single-vehicle [isMyVehicle]="true" [vehicle]="vehicle"
+                            (cancelOneVehicle)="handleCancelOneVehicle($event)"></app-single-vehicle>
       </div>
     </div>
   </div>

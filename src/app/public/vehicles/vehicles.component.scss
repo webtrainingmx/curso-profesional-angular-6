@@ -1,5 +1,15 @@
 @import "../../../styles-variables";
 
+.b-my-vehicles {
+  .b-vehicle {
+
+    &__rented {
+      background: $color-primary;
+    }
+  }
+
+}
+
 .b-vehicle {
   overflow: hidden;
 
@@ -39,7 +49,7 @@
   }
 
   &__rented {
-    background: $color-primary;
+    background: lightgray;
     border-radius: 5px;
     font-size: 7px;
     font-weight: 700;

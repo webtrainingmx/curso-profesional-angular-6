@@ -116,4 +116,17 @@ export class VehiclesService {
 
     return null;
   }
+
+  cancelVehicle(vehicle: Vehicle): Observable<Vehicle> {
+    const serviceURL = `${API.DATA_SERVICES_BASE_URL}/rentals/user/cancel-vehicle/${vehicle.id}`;
+    const token = this.getToken();
+
+    if (token) {
+      const headers = this.createHeadersObject(token);
+      return this._http.put<Vehicle>(serviceURL, null,
+        {headers: headers});
+    }
+
+    return null;
+  }
 }

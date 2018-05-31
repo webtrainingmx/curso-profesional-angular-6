@@ -19,7 +19,8 @@
     <div class="columns is-multiline">
       <div class="column is-one-quarter-desktop is-one-third-tablet"
            *ngFor="let vehicle of vehicles | filterBy:searchText:filterByFields">
-        <app-single-vehicle [vehicle]="vehicle" (changeVehicle)="handleChangeVehicle($event)"></app-single-vehicle>
+        <app-single-vehicle [vehicle]="vehicle" [isMyVehicle]="false"
+                            (rentOneVehicle)="handleRentOneVehicle($event)"></app-single-vehicle>
       </div>
     </div>
   </div>
