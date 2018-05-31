@@ -3,8 +3,8 @@ import { Vehicle } from '../models/vehicle.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { API } from '../../../config/api';
-import { AuthenticationService } from '../../../common/services/authentication.service';
 import { SessionStorageService } from 'ngx-webstorage';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +59,22 @@ export class VehiclesService {
   //   };
   // }
 
+  getToken() {
+    const user = this._sessionStorage.retrieve('user');
+    if (!!user && !!user.token) {
+      return user.token;
+    }
+    return false;
+  }
+
+  createHeadersObject(token) {
+    return new HttpHeaders(
+      {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Authorization': `Bearer ${token}`
+      });
+  }
+
   getVehicles(): Observable<Array<Vehicle>> {
     const serviceURL = `${API.DATA_SERVICES_BASE_URL}/vehicles`;
     return this._http.get<Array<Vehicle>>(serviceURL);
@@ -66,20 +82,38 @@ export class VehiclesService {
 
   getVehiclesByUsingToken(): Observable<Array<Vehicle>> {
     const serviceURL = `${API.DATA_SERVICES_BASE_URL}/rentals/user`;
-    const user = this._sessionStorage.retrieve('user');
+    const token = this.getToken();
 
-    const headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json; charset=utf-8',
-        'Authorization': `Bearer ${user.token}`
-      });
+    if (token) {
+      const headers = this.createHeadersObject(token);
+      return this._http.get<Array<Vehicle>>(serviceURL, {headers: headers});
+    }
 
-    return this._http.get<Array<Vehicle>>(serviceURL, {headers: headers});
+    return null;
   }
 
   getVehicle(id: number): Observable<Vehicle> {
     const serviceURL = `${API.DATA_SERVICES_BASE_URL}/vehicles/${id}`;
     return this._http.get<Vehicle>(serviceURL);
     // return this.vehicles.find(vehicle => vehicle.id === id);
+  }
+
+  rentVehicle(vehicle: Vehicle): Observable<Vehicle> {
+    const serviceURL = `${API.DATA_SERVICES_BASE_URL}/rentals/user/rent-vehicle/${vehicle.id}`;
+    const token = this.getToken();
+
+    if (token) {
+      const headers = this.createHeadersObject(token);
+
+      // TODO: We should change the static dates to the ones received from the UI
+      const body = {
+        'starts_on': moment(new Date()).format('YYYY-MM-DD HH:mm:ss'),
+        'ends_on': moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
+      };
+      return this._http.put<Vehicle>(serviceURL, body,
+        {headers: headers});
+    }
+
+    return null;
   }
 }
