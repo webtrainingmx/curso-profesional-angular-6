@@ -43,6 +43,9 @@
         <div class="b-vehicle__b-rented-information" *ngIf="vehicle.rented">
           <span class="b-vehicle__rented">Rented</span>
         </div>
+        <div class="b-vehicle__rent-information" *ngIf="!vehicle.rented">
+          <a (click)="rentVehicle(vehicle)" class="b-vehicle__rent">Rent</a>
+        </div>
       </div>
     </div>
   </div>
