@@ -30,13 +30,16 @@ export class VehiclesComponent implements OnInit {
   }
 
   handleChangeVehicle(event) {
-    const temporaryVehicle: Vehicle = event;
-    console.log('>> handleChangeVehicle()', temporaryVehicle);
+    const vehicle: Vehicle = event;
+    console.log('>> handleChangeVehicle()', vehicle);
 
     if (this._authService.isLoggedIn()) {
-      this._vehiclesService.rentVehicle(temporaryVehicle).subscribe(
+      this._vehiclesService.rentVehicle(vehicle).subscribe(
         response => {
+          console.log('>> rentVehicle() > ', response);
 
+          // Update the vehicle attribute when success
+          vehicle.rented = true;
         },
         error => console.error(error),
         () => {
