@@ -21,4 +21,9 @@ export class AuthHomeComponent implements OnInit {
     );
   }
 
+  handleRentedVehicle(event) {
+    const vehicle: Vehicle = event;
+    this.vehicles.push(vehicle);
+  }
+
 }

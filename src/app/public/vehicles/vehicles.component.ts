@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
 import { VehiclesService } from './services/vehicles.service';
 import { Vehicle } from './models/vehicle.model';
 import { AuthenticationService } from '../../common/services/authentication.service';
@@ -15,6 +21,8 @@ export class VehiclesComponent implements OnInit {
   vehicles: Array<Vehicle>;
   searchText: string;
   filterByFields = ['model'];
+
+  @Output() rentedVehicle = new EventEmitter<Vehicle>();
 
   constructor(
     public _vehiclesService: VehiclesService,
@@ -40,6 +48,9 @@ export class VehiclesComponent implements OnInit {
 
           // Update the vehicle attribute when success
           vehicle.rented = true;
+
+          // Send the notification a vehicle was rented
+          this.rentedVehicle.emit(vehicle);
         },
         error => console.error(error),
         () => {
