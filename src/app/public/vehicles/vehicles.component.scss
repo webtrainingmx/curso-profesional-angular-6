@@ -47,4 +47,15 @@
     padding: 7px 7px 9px 10px;
     text-transform: uppercase;
   }
+
+  &__rent {
+    background: $color-secondary;
+    border-radius: 5px;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 7px 7px 9px 10px;
+    text-transform: uppercase;
+    color: white;
+  }
 }
